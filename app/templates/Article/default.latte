@@ -1,0 +1,35 @@
+{block content}
+    <h1 n:block=title>Blog</h1>
+    <p>
+        <a n:href=":add">Přidat článek</a>
+    </p>
+
+    {if count($articles)}
+        <ul>
+            {foreach $articles as $article}
+                <li>
+                    <div>
+                        <h3>{$article->title}</h3>
+                        <p>
+                            <small>
+                                {if $article->published > $article->lastUpdate}
+                                    publikováno: {$article->published}
+                                {else}
+                                    aktualizováno: {$article->lastUpdate}
+                                {/if}
+                            </small>
+                        </p>
+                        <p class="perex">{$article->perex}</p>
+                        <p class="text-right">
+                            <a n:href="detail $article->id" title="Detail článku">Zobrazit celý článek</a>
+                        </p>
+                        {sep}<hr>{/sep}
+                    </div>
+                </li>
+            {/foreach}
+        </ul>
+
+    {else}
+        <p>Tato sekce je prázdná.</p>
+    {/if}
+

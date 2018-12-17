@@ -1,0 +1,10 @@
+parameters:
+
+application:
+
+services:
+    - App\CoreModule\Model\ArticleManager
+
+    #forms
+    - App\CoreModule\Forms\ArticleFormFactory
+

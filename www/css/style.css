@@ -1,0 +1,16 @@
+body{
+    min-width: 300px;
+}
+.flash{
+    padding: 10px 0;
+}
+
+.flash.success{
+    color: #009900;
+}
+.flash.error{
+    color: #DD0000;
+}
+.my-auto{
+    width: 100%;
+}

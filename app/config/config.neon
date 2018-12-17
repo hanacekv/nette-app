@@ -13,3 +13,10 @@ session:
 
 services:
 	router: App\RouterFactory::createRouter
+	nette.latteFactory:
+		setup:
+			- setTempDirectory(null)
+
+# Propojení s dalšími konfiguračními soubory.
+includes:
+    - ../CoreModule/config/config.neon # Načtení konfigurace z CoreModule.
