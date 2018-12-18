@@ -65,12 +65,20 @@ class ArticlePresenter extends BasePresenter
     public function articleFormSucceeded(Form $form, \stdClass $values)
     {
         if(empty($values->id)) {
-            unset($values[ArticleManager::COLUMN_ID]);
-            $this->articleManager->addArticle($values);
-            $this->flashMessage('Článek byl úspěšně publikován.', 'success');
+            $article = $this->articleManager->addArticle($values);
+            if($article) {
+                $this->flashMessage('Článek byl úspěšně publikován.', 'success');
+            } else {
+                $this->flashMessage('Nepodařilo se vložit nový článek', 'error');
+            }
+
         } else {
-            $this->articleManager->editArticle($values);
-            $this->flashMessage('Článek byl úspěšně editován.', 'success');
+            $numRows = $this->articleManager->editArticle($values);
+            if($numRows) {
+                $this->flashMessage('Článek byl úspěšně editován.', 'success');
+            } else {
+                $this->flashMessage('Článek se nepodařilo uložit', 'error');
+            }
         }
 
         $this->redirect('default');

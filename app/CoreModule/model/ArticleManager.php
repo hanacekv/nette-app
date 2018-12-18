@@ -34,6 +34,7 @@ class ArticleManager extends DatabaseManager
      */
     public function addArticle(ArrayHash $article)
     {
+        unset($article[self::COLUMN_ID]);
         $article['published'] = date("Y-m-d H:i:s");
         return $this->database->table(self::TABLE_NAME)->insert($article);
     }
