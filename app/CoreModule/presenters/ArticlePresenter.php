@@ -10,8 +10,8 @@ use Nette\Application\UI\Form;
 class ArticlePresenter extends BasePresenter
 {
 
-    /** @var @var  ArticleFormFactory */
-    public $articleFormFactory;
+    /** @var  ArticleFormFactory */
+    private $articleFormFactory;
 
 
     /** @var ArticleManager */

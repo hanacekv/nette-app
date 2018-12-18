@@ -5,6 +5,8 @@ application:
 services:
     - App\CoreModule\Model\ArticleManager
 
-    #forms
+    # Forms
+    - App\CoreModule\Forms\FormFactory
     - App\CoreModule\Forms\ArticleFormFactory
+    - App\CoreModule\Forms\ContactFormFactory
 

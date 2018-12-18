@@ -1,18 +1,31 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\CoreModule\Forms;
 
-use Nette\Application\UI\Form;
-use AlesWita\FormRenderer\BootstrapV4Renderer;
+use Nette\SmartObject;
+use App\CoreModule\Forms\FormFactory;
 
 class ContactFormFactory
 {
+    use SmartObject;
+
+    /**
+     * @var FormFactory
+     */
+    private $formFactory;
+
+    /**
+     * @param FormFactory $formFactory
+     */
+    public function __construct(FormFactory $formFactory)
+    {
+        $this->formFactory = $formFactory;
+    }
+
     public function create()
     {
-        $form = new Form();
-        $form->setRenderer(new BootstrapV4Renderer);
+        $form = $this->formFactory->create();
 
         $form->addText('name', 'Vaše jméno:')
             ->setRequired('Prosím zadejte Vaše jméno.');
