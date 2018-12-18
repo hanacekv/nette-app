@@ -54,6 +54,6 @@ class ArticleManager extends DatabaseManager
      */
     public function removeArticle(int $id)
     {
-        $this->database->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->delete();
+        return $this->database->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->delete();
     }
 }

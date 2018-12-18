@@ -28,6 +28,13 @@ class ArticlePresenter extends BasePresenter
         $this->articleManager = $articleManager;
     }
 
+    public function actionEdit($id)
+    {
+        $article = $this->articleManager->getArticle($id);
+        $this['articleForm']->setDefaults($article);
+
+    }
+
     public function renderDefault()
     {
         $articles = $this->articleManager->getArticles();
@@ -47,11 +54,16 @@ class ArticlePresenter extends BasePresenter
         
     }
 
-    public function actionEdit($id)
+    public function handleDeleteArticle(int $id)
     {
-        $article = $this->articleManager->getArticle($id);
-        $this['articleForm']->setDefaults($article);
-        
+        $numRows = $this->articleManager->removeArticle($id);
+        if($numRows) {
+            $this->flashMessage('Článek byl úspěšně smazán.', 'success');
+        } else {
+            $this->flashMessage('Článek se nepodařilo smazat', 'error');
+        }
+
+        $this->redirect('default');
     }
 
     protected function createComponentArticleForm()

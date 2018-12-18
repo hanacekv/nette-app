@@ -2,7 +2,8 @@
     <h1 n:block=title>{$article->title}</h1>
     <p>
         <a n:href="default">Seznam článků</a> |
-        <a n:href="edit $article->id">Upravit článek</a>
+        <a n:href="edit $article->id">Upravit článek</a> |
+        <a n:href="deleteArticle! $article->id">Smazat článek</a>
     </p>
 
     <p>{$article->perex}</p>
